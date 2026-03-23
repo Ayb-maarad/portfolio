@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Cpu, Code, Database, Wifi } from "lucide-react";
+import { Cpu, Code, Wrench, Globe } from "lucide-react";
 
 const skills = [
-  { icon: Cpu, label: "Systèmes Embarqués", detail: "STM32, Arduino, Raspberry Pi, FPGA" },
-  { icon: Code, label: "Développement", detail: "C/C++, Python, Java, TypeScript" },
-  { icon: Database, label: "Systèmes d'Information", detail: "SQL, NoSQL, UML, Architecture SI" },
-  { icon: Wifi, label: "IoT & Réseaux", detail: "MQTT, LoRa, WiFi, BLE, TCP/IP" },
+  { icon: Code, label: "Développement Web", detail: "React.js, Java Spring Boot, Express.js, PostgreSQL, JavaScript, Tailwind CSS, CI/CD, Docker, Figma" },
+  { icon: Cpu, label: "Systèmes Embarqués", detail: "Arduino, Raspberry Pi, ESP32, Capteurs & Actionneurs, Node-RED, Programmation C" },
+  { icon: Wrench, label: "Outils & Méthodologies", detail: "Git, GitHub, VS Code, AGILE, Cycle en V, UML/SysML, Proxmox VE, Linux & Bash" },
+  { icon: Globe, label: "Divers", detail: "DevOps, Cybersécurité, Réseaux informatiques, Statistiques & Analyse de données, JavaFX" },
 ];
 
 const AboutSection = () => {
