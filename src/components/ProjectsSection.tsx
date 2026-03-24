@@ -5,7 +5,12 @@ import { ExternalLink, Github, X, ChevronLeft, ChevronRight, Eye } from "lucide-
 import timemanager1 from "@/assets/timemanager-1.png";
 import timemanager2 from "@/assets/timemanager-2.png";
 import timemanager3 from "@/assets/timemanager-3.png";
+import timemanager4 from "@/assets/timemanager-4.png";
+import timemanager5 from "@/assets/timemanager-5.png";
+import timemanager6 from "@/assets/timemanager-6.png";
+import timemanager7 from "@/assets/timemanager-7.png";
 import budgetTracker from "@/assets/budget-tracker.png";
+import queueSystem from "@/assets/queue-system.png";
 
 type Project = {
   id: string;
@@ -16,6 +21,7 @@ type Project = {
   screenshots?: string[];
   github?: string;
   link?: string;
+  type?: "académique" | "personnel";
 };
 
 const projects: Project[] = [
@@ -23,17 +29,19 @@ const projects: Project[] = [
     id: "1",
     number: "01",
     title: "Time Manager",
-    description: "Application web de suivi de pointage développée à Epitech. Gestion des temps de travail avec interface moderne et pipeline CI/CD complète.",
-    tags: ["React.js", "Spring Boot", "PostgreSQL", "Docker", "CI/CD", "GitHub Actions"],
-    screenshots: [timemanager1, timemanager2, timemanager3],
+    description: "Application web de suivi de pointage développée à Epitech. Gestion des temps de travail avec authentification JWT, gestion des rôles (Admin / Manager / Employee), interface moderne et pipeline CI/CD complète.",
+    tags: ["React.js", "Spring Boot", "PostgreSQL", "Docker", "CI/CD", "GitHub Actions", "JWT", "Rôles & Permissions", "REST API"],
+    screenshots: [timemanager1, timemanager2, timemanager3, timemanager4, timemanager5, timemanager6, timemanager7],
+    type: "académique",
   },
   {
     id: "2",
     number: "02",
     title: "Personal Budget Tracker",
     description: "Application de suivi budgétaire personnel avec API REST, tests automatisés et base de données relationnelle.",
-    tags: ["React", "TypeScript", "Express.js", "PostgreSQL", "Jest"],
+    tags: ["React", "TypeScript", "Express.js", "PostgreSQL", "Jest", "REST API"],
     screenshots: [budgetTracker],
+    type: "personnel",
   },
   {
     id: "3",
@@ -41,6 +49,7 @@ const projects: Project[] = [
     title: "Système Intelligent d'Irrigation",
     description: "Système embarqué d'irrigation automatisé utilisant des capteurs pour optimiser l'arrosage, avec interface de monitoring en JavaFX.",
     tags: ["Arduino", "C", "JavaFX", "MySQL", "Capteurs"],
+    type: "académique",
   },
   {
     id: "4",
@@ -48,6 +57,8 @@ const projects: Project[] = [
     title: "Gestion de File d'Attente",
     description: "Système IoT de gestion de file d'attente avec interface web et communication entre microcontrôleurs et serveur via Node-RED.",
     tags: ["ESP32", "Raspberry Pi", "Node-RED", "JavaScript", "HTML/CSS"],
+    screenshots: [queueSystem],
+    type: "académique",
   },
 ];
 
@@ -122,12 +133,30 @@ const ProjectsSection = () => {
                 key={project.id}
                 variants={cardVariants}
                 onClick={() => openModal(project)}
-                className={`group relative rounded-xl border border-border bg-card p-6 hover:border-primary/30 transition-all duration-500 shadow-card hover:shadow-glow ${
+                className={`group relative flex flex-col rounded-xl border border-border bg-card p-6 hover:border-primary/30 transition-all duration-500 shadow-card hover:shadow-glow overflow-hidden ${
                   project.screenshots ? "cursor-pointer" : ""
                 }`}
               >
+                {/* Screenshot hover overlay */}
+                {project.screenshots && (
+                  <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl overflow-hidden">
+                    <img
+                      src={project.screenshots[0]}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-background/70" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg">
+                        <Eye size={16} />
+                        Afficher les captures
+                      </span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Number */}
-                <span className="absolute top-4 right-4 font-mono text-xs text-muted-foreground">
+                <span className="absolute top-4 right-4 font-mono text-xs text-muted-foreground z-0">
                   {project.number}
                 </span>
 
@@ -149,7 +178,7 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mt-auto">
+                <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -161,7 +190,7 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-3 mt-5 pt-4 border-t border-border">
+                <div className="flex items-center gap-3 mt-auto pt-4 border-t border-border">
                   {project.github && (
                     <a href={project.github} onClick={(e) => e.stopPropagation()} className="text-muted-foreground hover:text-primary transition-colors">
                       <Github size={16} />
@@ -172,9 +201,9 @@ const ProjectsSection = () => {
                       <ExternalLink size={16} />
                     </a>
                   )}
-                  {!project.github && !project.link && (
-                    <span className="text-xs text-muted-foreground font-mono">Projet académique</span>
-                  )}
+                  <span className="text-xs text-muted-foreground font-mono ml-auto">
+                    Projet {project.type ?? "académique"}
+                  </span>
                 </div>
 
                 {/* Hover glow effect */}

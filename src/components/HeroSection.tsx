@@ -26,7 +26,7 @@ const HeroSection = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="font-mono text-sm text-primary tracking-widest uppercase mb-6"
           >
-            01 — Portfolio
+        
           </motion.p>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8">
@@ -41,7 +41,7 @@ const HeroSection = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
           >
-            Ingénieur en systèmes embarqués · Étudiant en Master des Systèmes d'Informations
+           Étudiant en Master des Systèmes d'Informations | Développeur web 
           </motion.p>
 
           <motion.div
