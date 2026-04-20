@@ -32,6 +32,7 @@ const projects: Project[] = [
     description: "Application web de suivi de pointage développée à Epitech. Gestion des temps de travail avec authentification JWT, gestion des rôles (Admin / Manager / Employee), interface moderne et pipeline CI/CD complète.",
     tags: ["React.js", "Spring Boot", "PostgreSQL", "Docker", "CI/CD", "GitHub Actions", "JWT", "Rôles & Permissions", "REST API"],
     screenshots: [timemanager1, timemanager2, timemanager3, timemanager4, timemanager5, timemanager6, timemanager7],
+    github: "https://github.com/Ayb-maarad/Time-manager",
     type: "académique",
   },
   {
@@ -41,6 +42,7 @@ const projects: Project[] = [
     description: "Application de suivi budgétaire personnel avec API REST, tests automatisés et base de données relationnelle.",
     tags: ["React", "TypeScript", "Express.js", "PostgreSQL", "Jest", "REST API"],
     screenshots: [budgetTracker],
+    github: "https://github.com/Ayb-maarad/Personal-budget",
     type: "personnel",
   },
   {
