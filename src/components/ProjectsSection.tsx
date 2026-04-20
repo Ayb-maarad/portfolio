@@ -128,13 +128,13 @@ const ProjectsSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {projects.map((project) => (
               <motion.div key={project.id} variants={cardVariants} className="flex flex-col gap-3">
               <motion.article
                 onClick={() => openModal(project)}
-                className={`group relative flex flex-col rounded-xl border border-border bg-card p-6 hover:border-primary/30 transition-all duration-500 shadow-card hover:shadow-glow overflow-hidden ${
+                className={`group relative flex-1 flex flex-col rounded-xl border border-border bg-card p-6 hover:border-primary/30 transition-all duration-500 shadow-card hover:shadow-glow overflow-hidden ${
                   project.screenshots ? "cursor-pointer" : ""
                 }`}
               >
@@ -195,16 +195,16 @@ const ProjectsSection = () => {
               </motion.article>
 
               {/* Links — outside the card to stay accessible on hover */}
-              <div className="flex items-center gap-3 px-1">
+              <div className="flex items-center gap-3 px-1 h-8">
                 {project.github && (
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    title="Voir sur GitHub"
+                    className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-primary border border-border hover:border-primary/40 rounded-md px-3 py-1.5 transition-all duration-200"
                   >
-                    <Github size={16} />
+                    <Github size={13} />
+                    Code source
                   </a>
                 )}
                 {project.link && (
