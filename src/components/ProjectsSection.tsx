@@ -131,9 +131,8 @@ const ProjectsSection = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {projects.map((project) => (
+              <motion.div key={project.id} variants={cardVariants} className="flex flex-col gap-3">
               <motion.article
-                key={project.id}
-                variants={cardVariants}
                 onClick={() => openModal(project)}
                 className={`group relative flex flex-col rounded-xl border border-border bg-card p-6 hover:border-primary/30 transition-all duration-500 shadow-card hover:shadow-glow overflow-hidden ${
                   project.screenshots ? "cursor-pointer" : ""
@@ -191,26 +190,38 @@ const ProjectsSection = () => {
                   ))}
                 </div>
 
-                {/* Links */}
-                <div className="flex items-center gap-3 mt-auto pt-4 border-t border-border">
-                  {project.github && (
-                    <a href={project.github} onClick={(e) => e.stopPropagation()} className="text-muted-foreground hover:text-primary transition-colors">
-                      <Github size={16} />
-                    </a>
-                  )}
-                  {project.link && (
-                    <a href={project.link} onClick={(e) => e.stopPropagation()} className="text-muted-foreground hover:text-primary transition-colors">
-                      <ExternalLink size={16} />
-                    </a>
-                  )}
-                  <span className="text-xs text-muted-foreground font-mono ml-auto">
-                    Projet {project.type ?? "académique"}
-                  </span>
-                </div>
-
                 {/* Hover glow effect */}
                 <div className="absolute inset-0 rounded-xl bg-primary/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </motion.article>
+
+              {/* Links — outside the card to stay accessible on hover */}
+              <div className="flex items-center gap-3 px-1">
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    title="Voir sur GitHub"
+                  >
+                    <Github size={16} />
+                  </a>
+                )}
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <ExternalLink size={16} />
+                  </a>
+                )}
+                <span className="text-xs text-muted-foreground font-mono ml-auto">
+                  Projet {project.type ?? "académique"}
+                </span>
+              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
