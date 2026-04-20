@@ -128,7 +128,7 @@ const ProjectsSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start"
           >
             {projects.map((project) => (
               <motion.div key={project.id} variants={cardVariants} className="flex flex-col gap-3">
