@@ -62,6 +62,14 @@ const projects: Project[] = [
     screenshots: [queueSystem],
     type: "académique",
   },
+  {
+    id: "5",
+    number: "05",
+    title: "Infrastructure Hybride Sécurisée",
+    description: "Déploiement d'une infrastructure hybride composée de deux sites Proxmox interconnectés via VPN site-to-site. Mise en place de firewalls pfSense, d'un bastion SSH pour l'accès externe sécurisé, d'un IPAM NetBox, d'une centralisation des logs avec Elasticsearch et d'un site web interne déployé avec Nginx/Docker.",
+    tags: ["Proxmox", "Ansible", "pfSense", "OpenVPN", "NetBox", "Elasticsearch", "Nginx", "Linux", "SSH Bastion", "VPN"],
+    type: "académique",
+  },
 ];
 
 const containerVariants = {
