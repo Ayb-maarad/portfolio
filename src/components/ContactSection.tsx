@@ -17,7 +17,7 @@ const ContactSection = () => {
             Travaillons <span className="text-gradient">ensemble</span>
           </h2>
           <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
-            Disponible pour un stage en developpement web de 4 à 6 mois à partir d'Avril 
+            En recherche d’une alternance de 12 mois Disponible dès maintenant.
           </p>
 
           <div className="inline-flex flex-col gap-4 text-left bg-secondary/40 border border-border rounded-xl px-8 py-6 w-full max-w-md">
@@ -30,7 +30,7 @@ const ContactSection = () => {
               <span className="flex items-center justify-center w-9 h-9 rounded-md bg-primary/20 text-primary shrink-0">
                 <Mail size={18} />
               </span>
-              <span className="text-sm font-medium">aybmaarad@gmail.com</span>
+              <span className="text-sm font-medium">ayoub.maarad@epitech.eu</span>
             </a>
 
             <div className="flex items-center gap-3 text-foreground">

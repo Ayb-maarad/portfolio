@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import { ExternalLink, Github, X, ChevronLeft, ChevronRight, Eye, CheckCircle2, Clock3 } from "lucide-react";
 
 import timemanager1 from "@/assets/timemanager-1.png";
 import timemanager2 from "@/assets/timemanager-2.png";
@@ -18,6 +18,7 @@ type Project = {
   title: string;
   description: string;
   tags: string[];
+  status: "completed" | "in-progress";
   screenshots?: string[];
   github?: string;
   link?: string;
@@ -29,6 +30,7 @@ const projects: Project[] = [
     id: "1",
     number: "01",
     title: "Time Manager",
+    status: "completed",
     description: "Application web de suivi de pointage développée à Epitech. Gestion des temps de travail avec authentification JWT, gestion des rôles (Admin / Manager / Employee), interface moderne et pipeline CI/CD complète.",
     tags: ["React.js", "Spring Boot", "PostgreSQL", "Docker", "CI/CD", "GitHub Actions", "JWT", "Rôles & Permissions", "REST API"],
     screenshots: [timemanager1, timemanager2, timemanager3, timemanager4, timemanager5, timemanager6, timemanager7],
@@ -39,6 +41,7 @@ const projects: Project[] = [
     id: "2",
     number: "02",
     title: "Personal Budget Tracker",
+    status: "completed",
     description: "Application de suivi budgétaire personnel développée selon l'architecture microservices.",
     tags: ["React", "TypeScript", "Express.js", "PostgreSQL", "Jest", "REST API", "Microservices", "Docker compose", "JWT", "Nginx"],
     screenshots: [budgetTracker],
@@ -46,17 +49,10 @@ const projects: Project[] = [
     type: "personnel",
   },
   {
-    id: "3",
-    number: "03",
-    title: "Système Intelligent d'Irrigation",
-    description: "Système embarqué d'irrigation automatisé utilisant des capteurs pour optimiser l'arrosage, avec interface de monitoring en JavaFX.",
-    tags: ["Arduino", "C", "JavaFX", "MySQL", "Capteurs"],
-    type: "académique",
-  },
-  {
     id: "4",
-    number: "04",
+    number: "03",
     title: "Gestion de File d'Attente",
+    status: "completed",
     description: "Système IoT de gestion de file d'attente avec interface web et communication entre microcontrôleurs et serveur via Node-RED.",
     tags: ["ESP32", "Raspberry Pi", "Node-RED", "JavaScript", "HTML/CSS"],
     screenshots: [queueSystem],
@@ -64,11 +60,21 @@ const projects: Project[] = [
   },
   {
     id: "5",
-    number: "05",
+    number: "04",
     title: "Infrastructure Hybride Sécurisée",
+    status: "completed",
     description: "Déploiement d'une infrastructure hybride composée de deux sites Proxmox interconnectés via VPN site-to-site. Mise en place de firewalls pfSense, d'un bastion SSH pour l'accès externe sécurisé, d'un IPAM NetBox, d'une centralisation des logs avec Elasticsearch et d'un site web interne déployé avec Nginx.",
     tags: ["Proxmox", "Ansible", "pfSense", "OpenVPN", "NetBox", "Elasticsearch", "Nginx", "Linux", "SSH Bastion"],
     type: "académique",
+  },
+  {
+    id: "launchpath",
+    number: "05",
+    title: "LaunchPath",
+    status: "in-progress",
+    description: "Plateforme web en cours de développement pour aider les fondateurs de SaaS à analyser les parcours utilisateurs et identifier les points d’abandon. Le projet prévoit un suivi des événements via un SDK JavaScript, un tableau de bord et un module IA pour analyser les retours utilisateurs et proposer des améliorations.",
+    tags: ["React", "Redux", "NestJS", "PostgreSQL", "Docker"],
+    type: "personnel",
   },
 ];
 
@@ -169,13 +175,24 @@ const ProjectsSection = () => {
                   {project.number}
                 </span>
 
-                {/* Preview badge */}
+                <div className="relative z-20 flex flex-wrap items-center gap-3 mb-4 pr-6 pointer-events-none">
+                  <span
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium backdrop-blur-sm ${
+                      project.status === "completed"
+                        ? "border-emerald-400/25 bg-emerald-400/10 text-emerald-300 shadow-[0_0_12px_rgba(52,211,153,0.08)]"
+                        : "border-amber-400/25 bg-amber-400/10 text-amber-300 shadow-[0_0_12px_rgba(251,191,36,0.08)]"
+                    }`}
+                  >
+                    {project.status === "completed" ? <CheckCircle2 size={13} aria-hidden="true" /> : <Clock3 size={13} aria-hidden="true" />}
+                    {project.status === "completed" ? "Terminé" : "En cours"}
+                  </span>
                 {project.screenshots && (
-                  <div className="flex items-center gap-1.5 mb-4 text-primary">
+                  <div className="flex items-center gap-1.5 text-primary">
                     <Eye size={14} />
                     <span className="text-xs font-mono">{project.screenshots.length} capture{project.screenshots.length > 1 ? "s" : ""}</span>
                   </div>
                 )}
+                </div>
 
                 <div className="mb-4">
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-gradient transition-all duration-300 mb-3">

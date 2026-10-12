@@ -41,7 +41,7 @@ const HeroSection = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
           >
-           Étudiant en Master des Systèmes d'Informations | Développeur web 
+           Étudiant en Master 2 Architecte des systèmes d'Informations | Développeur web & mobile
           </motion.p>
 
           <motion.div

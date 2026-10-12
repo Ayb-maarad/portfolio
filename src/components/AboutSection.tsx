@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import { Cpu, Code, Wrench, Globe } from "lucide-react";
+import { Code, Wrench, Globe } from "lucide-react";
 
 const skills = [
-  { icon: Code, label: "Développement Web", detail: "React.js, Java Spring Boot, Express.js, PostgreSQL, JavaScript, Tailwind CSS, CI/CD, Docker, Figma" },
-  { icon: Cpu, label: "Systèmes Embarqués", detail: "Arduino, Raspberry Pi, ESP32, Capteurs & Actionneurs, Node-RED, Programmation C" },
+  { icon: Code, label: "Développement Web & mobile", detail: "React.js, React native, redux, Nestjs ,PostgreSQL, JavaScript, Tailwind CSS, CI/CD, Docker, Figma, java, Python" },
   { icon: Wrench, label: "Outils & Méthodologies", detail: "Git, GitHub, VS Code, AGILE, Cycle en V, UML/SysML, Proxmox VE, Linux & Bash" },
-  { icon: Globe, label: "Divers", detail: "DevOps, Cybersécurité, Réseaux informatiques, Statistiques & Analyse de données, JavaFX" },
+  { icon: Globe, label: "Divers", detail: "DevOps, Cybersécurité, Réseaux informatiques, Statistiques & Analyse de données" },
 ];
 
 const AboutSection = () => {
